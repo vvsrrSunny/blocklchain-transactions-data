@@ -26,7 +26,7 @@ const items: MenuItem[] = [
         getItem('Shares', '1', <UserOutlined />),
     ]),
 ];
-const SiderLayout = () => {
+const SiderContent = () => {
     return (
         <Sider
             breakpoint="lg"
@@ -55,4 +55,4 @@ const SiderLayout = () => {
     );
 };
 
-export default SiderLayout;
+export default SiderContent;

@@ -1,9 +1,10 @@
 import React, { ReactNode } from "react";
 import { Layout, theme } from 'antd';
 import '../App.css';
-import SiderLayout from "./Sider";
+import SiderContent from "./SiderContent";
+import HeaderContent from "./HeaderContent";
 
-const { Header, Content, Footer } = Layout;
+const { Content, Footer } = Layout;
 
 interface Props {
     children?: ReactNode;
@@ -16,9 +17,9 @@ const AppLayout: React.FC = (props: Props) => {
 
     return (
         <Layout style={{ minHeight: '100vh' }}>
-            <SiderLayout />
+            <SiderContent />
             <Layout>
-                <Header style={{ padding: 0, background: colorBgContainer }} />
+                <HeaderContent />
                 <Content style={{ margin: '24px 16px 0' }}>
                     <div style={{ padding: 24, minHeight: 360, background: colorBgContainer }}>content</div>
                 </Content>
