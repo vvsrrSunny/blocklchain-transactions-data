@@ -60,7 +60,7 @@ const AppLayout: React.FC = (props: Props) => {
                 <Content style={{ margin: '24px 16px 0' }}>
                     <div style={{ padding: 24, minHeight: 360, background: colorBgContainer }}>content</div>
                 </Content>
-                <Footer style={{ textAlign: 'center' }}>Ant Design ©2023 Created by Ant UED</Footer>
+                <Footer style={{ textAlign: 'center' }}>Copy Right ©2023 All rights reserved</Footer>
             </Layout>
         </Layout>
     );
