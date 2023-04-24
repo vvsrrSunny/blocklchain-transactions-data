@@ -12,7 +12,10 @@ export interface ShareRelatedTransaction {
     transactionTime: number,
 }
 
-const initialState: Array<ShareRelatedTransaction> =  [
+export type ShareRelatedTransactionState = { results: Array<ShareRelatedTransaction> };
+
+const initialState: ShareRelatedTransactionState = {
+    results: [
         {
             id: 1,
             emailAddress: "bunny@gmail.com",
@@ -61,7 +64,8 @@ const initialState: Array<ShareRelatedTransaction> =  [
             sharesCount: 3344,
             transactionTime: 1,
         },
-    ];
+    ]
+};
 
 export const shareRelatedTransactionSlice = createSlice({
     name: 'shareRelatedTransaction',
@@ -70,10 +74,10 @@ export const shareRelatedTransactionSlice = createSlice({
     reducers: {
         // Use the PayloadAction type to declare the contents of `action.payload`
         addState: (state, action: PayloadAction<ShareRelatedTransaction>) => {
-            state.push(action.payload);
+            state.results.push(action.payload);
         },
         removeState: (state, action: PayloadAction<ShareRelatedTransaction>) => {
-            state = state.filter((result: ShareRelatedTransaction) => result.id !== action.payload.id);
+            state.results = state.results.filter((result: ShareRelatedTransaction) => result.id !== action.payload.id);
         },
     },
 });

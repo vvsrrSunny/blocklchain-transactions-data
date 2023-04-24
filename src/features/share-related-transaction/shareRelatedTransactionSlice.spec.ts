@@ -1,22 +1,12 @@
 import shareRelatedTransactionReducer, {
-    ShareRelatedTransaction,
+    ShareRelatedTransaction, ShareRelatedTransactionState,
+
     addState, removeState
 } from './shareRelatedTransactionSlice';
 
 describe('dnd reducer', () => {
-    const initialState: Array<ShareRelatedTransaction> = [
-        {
-            id: 1,
-            emailAddress: "bunny@gmail.com",
-            shareHolderName: "Bunny John",
-            Type: "buy",
-            sharesCount: 1000,
-            transactionTime: 1,
-        },
-    ];
-
-    it('should handle initial state', () => {
-        expect(shareRelatedTransactionReducer([
+    const initialState: ShareRelatedTransactionState = {
+        results: [
             {
                 id: 1,
                 emailAddress: "bunny@gmail.com",
@@ -25,16 +15,33 @@ describe('dnd reducer', () => {
                 sharesCount: 1000,
                 transactionTime: 1,
             },
-        ], { type: 'unknown' })).toEqual([
-            {
-                id: 1,
-                emailAddress: "bunny@gmail.com",
-                shareHolderName: "Bunny John",
-                Type: "buy",
-                sharesCount: 1000,
-                transactionTime: 1,
-            }
-        ]);
+        ]
+    };
+
+    it('should handle initial state', () => {
+        expect(shareRelatedTransactionReducer({
+            results: [
+                {
+                    id: 1,
+                    emailAddress: "bunny@gmail.com",
+                    shareHolderName: "Bunny John",
+                    Type: "buy",
+                    sharesCount: 1000,
+                    transactionTime: 1,
+                },
+            ]
+        }, { type: 'unknown' })).toEqual({
+            results: [
+                {
+                    id: 1,
+                    emailAddress: "bunny@gmail.com",
+                    shareHolderName: "Bunny John",
+                    Type: "buy",
+                    sharesCount: 1000,
+                    transactionTime: 1,
+                }
+            ]
+        });
     });
 
     it('should add share\'s related transaction', () => {
@@ -47,9 +54,9 @@ describe('dnd reducer', () => {
             transactionTime: 1,
         };
         const actual = shareRelatedTransactionReducer(initialState, addState(newResult));
-        expect(actual[1].id).toEqual(4);
-        expect(actual.length).toEqual(2);
-        expect(actual[1].shareHolderName).toEqual('Sunny Raj');
+        expect(actual.results[1].id).toEqual(4);
+        expect(actual.results.length).toEqual(2);
+        expect(actual.results[1].shareHolderName).toEqual('Sunny Raj');
     });
 
     it('should remove an item from share\'s related transactions state', () => {
@@ -62,27 +69,20 @@ describe('dnd reducer', () => {
             transactionTime: 1,
         };
 
-        const actual = shareRelatedTransactionReducer([
-            {
-                id: 1,
-                emailAddress: "bunny@gmail.com",
-                shareHolderName: "Bunny John",
-                Type: "buy",
-                sharesCount: 1000,
-                transactionTime: 1,
-            },
-            {
-                id: 6,
-                emailAddress: "ravi@gmail.com",
-                shareHolderName: "Rajamouli",
-                Type: "sell",
-                sharesCount: 3344,
-                transactionTime: 1,
-            },
-        ], removeState(ResultToRemove));
+        const actual = shareRelatedTransactionReducer({
+            results: [
+                {
+                    id: 6,
+                    emailAddress: "ravi@gmail.com",
+                    shareHolderName: "Rajamouli",
+                    Type: "sell",
+                    sharesCount: 3344,
+                    transactionTime: 1,
+                },
+            ]
+        }, removeState(ResultToRemove));
 
 
-        expect(actual.length).toEqual(2);
-        expect(actual[1].id).toEqual(6);
+        expect(actual.results.length).toEqual(0);
     });
 });
