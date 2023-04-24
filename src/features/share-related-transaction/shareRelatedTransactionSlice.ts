@@ -3,7 +3,7 @@ import { RootState } from '../../app/store';
 
 export type transactionType = "buy" | "sell";
 
-export interface shareRelatedTransaction {
+export interface ShareRelatedTransaction {
     id: number,
     emailAddress: string,
     shareHolderName: string,
@@ -12,7 +12,7 @@ export interface shareRelatedTransaction {
     transactionTime: number,
 }
 
-const initialState: Array<shareRelatedTransaction> =  [
+const initialState: Array<ShareRelatedTransaction> =  [
         {
             id: 1,
             emailAddress: "bunny@gmail.com",
@@ -69,10 +69,10 @@ export const shareRelatedTransactionSlice = createSlice({
     // The `reducers` field lets us define reducers and generate associated actions
     reducers: {
         // Use the PayloadAction type to declare the contents of `action.payload`
-        addState: (state, action: PayloadAction<shareRelatedTransaction>) => {
+        addState: (state, action: PayloadAction<ShareRelatedTransaction>) => {
             state.push(action.payload);
         },
-        removeState: (state, action: PayloadAction<shareRelatedTransaction>) => {
+        removeState: (state, action: PayloadAction<ShareRelatedTransaction>) => {
             state = state.filter((result) => result.id !== action.payload.id);
         },
     },
