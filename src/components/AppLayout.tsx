@@ -46,7 +46,9 @@ const AppLayout: React.FC = (props: Props) => {
                     console.log(collapsed, type);
                 }}
             >
-                <div className="logo h-8" />
+                <div className="">
+
+                </div>
                 <Menu
                     theme="dark"
                     mode="inline"

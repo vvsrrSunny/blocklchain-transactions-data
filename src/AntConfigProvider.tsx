@@ -4,7 +4,7 @@ interface Props {
     children?: ReactNode;
 }
 
-const AntConfigProvider= (props: Props) => {
+const AntConfigProvider = (props: Props) => {
     return (
         <ConfigProvider theme={{
             token: {

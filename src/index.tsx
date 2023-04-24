@@ -5,7 +5,7 @@ import { store } from './app/store';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import './index.css';
-import AntConfigProvider from './components/AntConfigProvider';
+import AntConfigProvider from './AntConfigProvider';
 
 const container = document.getElementById('root')!;
 const root = createRoot(container);
