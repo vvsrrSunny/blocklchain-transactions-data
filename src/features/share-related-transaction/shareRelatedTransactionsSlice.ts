@@ -3,7 +3,7 @@ import { RootState } from '../../app/store';
 
 export type transactionType = "buy" | "sell";
 
-export interface shareTransaction {
+export interface shareRelatedTransaction {
     id: number,
     emailAddress: string,
     shareHolderName: string,
@@ -12,7 +12,7 @@ export interface shareTransaction {
     transactionTime: number,
 }
 
-const initialState: { results: Array<shareTransaction> } = {
+const initialState: { results: Array<shareRelatedTransaction> } = {
     results: [
         {
             id: 1,
@@ -65,24 +65,24 @@ const initialState: { results: Array<shareTransaction> } = {
     ]
 };
 
-export const shareTransactionSlice = createSlice({
-    name: 'shareTransaction',
+export const shareRelatedTransactionSlice = createSlice({
+    name: 'shareRelatedTransaction',
     initialState,
     // The `reducers` field lets us define reducers and generate associated actions
     reducers: {
         // Use the PayloadAction type to declare the contents of `action.payload`
-        addState: (state, action: PayloadAction<shareTransaction>) => {
+        addState: (state, action: PayloadAction<shareRelatedTransaction>) => {
             state.results.push(action.payload);
         },
-        removeState: (state, action: PayloadAction<shareTransaction>) => {
+        removeState: (state, action: PayloadAction<shareRelatedTransaction>) => {
             state.results = state.results.filter((result) => result.id !== action.payload.id);
         },
     },
 });
 
 // provide a way to access the store using app selector.
-export const selectShareTransactionState = (state: RootState) => state.shareTransaction;
+export const selectShareRelatedTransactionState = (state: RootState) => state.shareRelatedTransaction;
 
-export const { addState, removeState } = shareTransactionSlice.actions;
+export const { addState, removeState } = shareRelatedTransactionSlice.actions;
 
-export default shareTransactionSlice.reducer;
+export default shareRelatedTransactionSlice.reducer;
