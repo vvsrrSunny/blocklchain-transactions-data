@@ -73,7 +73,7 @@ export const shareRelatedTransactionSlice = createSlice({
             state.push(action.payload);
         },
         removeState: (state, action: PayloadAction<ShareRelatedTransaction>) => {
-            state = state.filter((result) => result.id !== action.payload.id);
+            state = state.filter((result: ShareRelatedTransaction) => result.id !== action.payload.id);
         },
     },
 });
