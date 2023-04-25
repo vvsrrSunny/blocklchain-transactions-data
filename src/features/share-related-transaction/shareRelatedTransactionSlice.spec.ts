@@ -70,7 +70,7 @@ describe('dnd reducer', () => {
             shareHolderName: "Rajamouli",
             type: "sell",
             sharesCount: 3344,
-            transactionTime: "1",
+            transactionTime: "12",
         };
 
         const actual = shareRelatedTransactionReducer({
