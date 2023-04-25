@@ -11,7 +11,7 @@ interface Props {
     deleteRecord: (record: ShareRelatedTransaction) => void
 }
 
-const TransactionsTable = (props: Props) => {
+const ContentBody = (props: Props) => {
     const { notification } = App.useApp();
     const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
 
@@ -71,12 +71,13 @@ const TransactionsTable = (props: Props) => {
             title: 'Transaction Time',
             dataIndex: 'transactionTime',
             key: 'transactionTime',
-            sorter: (a : ShareRelatedTransaction, b: ShareRelatedTransaction) => {
+            sorter: (a: ShareRelatedTransaction, b: ShareRelatedTransaction) => {
                 const timeA = moment(a.transactionTime, 'HH:mm:ss');
                 const timeB = moment(b.transactionTime, 'HH:mm:ss');
                 return timeA.isBefore(timeB) ? -1 : timeA.isAfter(timeB) ? 1 : 0;
             },
             render: (_, record) => (
+                //$$ formate the time in a nice way
                 record.transactionTime
             ),
         },
@@ -91,10 +92,14 @@ const TransactionsTable = (props: Props) => {
 
     return (
         <>
+            <div className="pb-5 flex justify-end">
+                <Button type="primary" className="bg-amber-500">Add Transaction</Button>
+            </div>
+            
             <Table className='overflow-x-auto' dataSource={props.shareRelatedTransactionState.results} columns={columns} />
             <ModalContent handleOk={modalHandleOk} handleCancel={modalHandleCancel} isModalOpen={isModalOpen} />
         </>
     );
 }
 
-export default TransactionsTable;
+export default ContentBody;

@@ -1,6 +1,6 @@
 import { useAppSelector, useAppDispatch } from '../../app/hooks';
 import { ShareRelatedTransaction, ShareRelatedTransactionState, removeSharesTransactionState, selectShareRelatedTransactionState } from './shareRelatedTransactionSlice';
-import TransactionsTable from '../../components/TransactionsTable';
+import ContentBody from '../../components/ContentBody';
 import { App } from 'antd';
 
 const ShareRelatedTransactionContent = () => {
@@ -17,7 +17,7 @@ const ShareRelatedTransactionContent = () => {
         });
     }
     return (
-        <TransactionsTable deleteRecord={deleteRecord} shareRelatedTransactionState={shareRelatedTransactionState} />
+        <ContentBody deleteRecord={deleteRecord} shareRelatedTransactionState={shareRelatedTransactionState} />
     );
 }
 
