@@ -1,7 +1,7 @@
 import shareRelatedTransactionReducer, {
     ShareRelatedTransaction, ShareRelatedTransactionState,
 
-    addState, removeSharesTransactionState
+    addSharesTransactionState, removeSharesTransactionState
 } from './shareRelatedTransactionSlice';
 
 describe('dnd reducer', () => {
@@ -53,7 +53,7 @@ describe('dnd reducer', () => {
             sharesCount: 1000,
             transactionTime: 1,
         };
-        const actual = shareRelatedTransactionReducer(initialState, addState(newResult));
+        const actual = shareRelatedTransactionReducer(initialState, addSharesTransactionState(newResult));
         expect(actual.results[1].id).toEqual(4);
         expect(actual.results.length).toEqual(2);
         expect(actual.results[1].shareHolderName).toEqual('Sunny Raj');

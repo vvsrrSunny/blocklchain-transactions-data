@@ -24,7 +24,7 @@ const initialState: ShareRelatedTransactionState = {
             shareHolderName: "Bunny John",
             Type: "buy",
             sharesCount: 1000,
-            transactionTime: 1,
+            transactionTime: 400,
         },
         {
             key: 2,
@@ -33,7 +33,7 @@ const initialState: ShareRelatedTransactionState = {
             shareHolderName: "Benjamin Hartnett",
             Type: "buy",
             sharesCount: 3454,
-            transactionTime: 1,
+            transactionTime: 243,
         },
         {
             key: 3,
@@ -51,7 +51,7 @@ const initialState: ShareRelatedTransactionState = {
             shareHolderName: "Sunny Varanasi",
             Type: "sell",
             sharesCount: 1375,
-            transactionTime: 1,
+            transactionTime: 7006,
         },
         {
             key: 5,
@@ -60,7 +60,7 @@ const initialState: ShareRelatedTransactionState = {
             shareHolderName: "Raj Chandra",
             Type: "buy",
             sharesCount: 3333,
-            transactionTime: 1,
+            transactionTime: 453,
         },
         {
             key: 6,
@@ -69,7 +69,7 @@ const initialState: ShareRelatedTransactionState = {
             shareHolderName: "Rajamouli",
             Type: "sell",
             sharesCount: 3344,
-            transactionTime: 1,
+            transactionTime: 100,
         },
     ]
 };
@@ -80,7 +80,7 @@ export const shareRelatedTransactionSlice = createSlice({
     // The `reducers` field lets us define reducers and generate associated actions
     reducers: {
         // Use the PayloadAction type to declare the contents of `action.payload`
-        addState: (state, action: PayloadAction<ShareRelatedTransaction>) => {
+        addSharesTransactionState: (state, action: PayloadAction<ShareRelatedTransaction>) => {
             state.results.push(action.payload);
         },
         removeSharesTransactionState: (state, action: PayloadAction<ShareRelatedTransaction>) => {
@@ -92,6 +92,6 @@ export const shareRelatedTransactionSlice = createSlice({
 // provide a way to access the store using app selector.
 export const selectShareRelatedTransactionState = (state: RootState) => state.shareRelatedTransaction;
 
-export const { addState, removeSharesTransactionState } = shareRelatedTransactionSlice.actions;
+export const { addSharesTransactionState, removeSharesTransactionState } = shareRelatedTransactionSlice.actions;
 
 export default shareRelatedTransactionSlice.reducer;

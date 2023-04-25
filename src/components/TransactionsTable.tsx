@@ -70,6 +70,7 @@ const TransactionsTable = (props: Props) => {
             title: 'Transaction Time',
             dataIndex: 'transactionTime',
             key: 'transactionTime',
+            sorter: (a, b) => a.transactionTime - b.transactionTime,
         },
         {
             title: 'Action',
