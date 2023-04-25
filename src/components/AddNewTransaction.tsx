@@ -1,10 +1,12 @@
 import { Button, DatePicker, Drawer, Form, FormInstance, Input, InputNumber, Modal, Radio, TimePicker } from "antd";
 import moment from "moment";
 import React, { ReactNode, useState } from "react";
+import { ShareRelatedTransaction } from "../features/share-related-transaction/shareRelatedTransactionSlice";
 
 
 interface Props {
     children?: ReactNode;
+    addNewRecord: (newRecord: ShareRelatedTransaction) => void;
 }
 
 const AddNewTransaction = (props: Props) => {
@@ -20,10 +22,20 @@ const AddNewTransaction = (props: Props) => {
     };
 
     const onFinish = (values: any) => {
-        console.log(moment(values.transactionTime).format('DD-MM-YYYY h:mm A'));
+        // this time is Perth current time, may create time differences if tried at different place. 
         values.transactionTime = moment(values.transactionTime).format('DD-MM-YYYY h:mm A');
         console.log('Success:', values);
+        const newRecord: ShareRelatedTransaction = {
+            id: null,
+            emailAddress: values.emailAddress,
+            shareHolderName: values.shareHolderName,
+            type: values.type,
+            sharesCount: values.sharesCount,
+            transactionTime: values.transactionTime,
+        }
 
+        props.addNewRecord(newRecord);
+        onClose();
     };
 
     const onFinishFailed = (errorInfo: any) => {

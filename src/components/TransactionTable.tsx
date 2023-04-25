@@ -38,8 +38,8 @@ const TransactionTable = (props: Props) => {
             dataIndex: 'transactionTime',
             key: 'transactionTime',
             sorter: (a: ShareRelatedTransaction, b: ShareRelatedTransaction) => {
-                const timeA = moment(a.transactionTime, 'HH:mm:ss');
-                const timeB = moment(b.transactionTime, 'HH:mm:ss');
+                const timeA = moment(a.transactionTime, 'DD-MM-YYYY h:mm A');
+                const timeB = moment(b.transactionTime, 'DD-MM-YYYY h:mm A');
                 return timeA.isBefore(timeB) ? -1 : timeA.isAfter(timeB) ? 1 : 0;
             },
             render: (_, record) => (

@@ -12,7 +12,7 @@ describe('dnd reducer', () => {
                 id: 1,
                 emailAddress: "bunny@gmail.com",
                 shareHolderName: "Bunny John",
-                Type: "buy",
+                type: "buy",
                 sharesCount: 1000,
                 transactionTime: "1",
             },
@@ -27,7 +27,7 @@ describe('dnd reducer', () => {
                     id: 1,
                     emailAddress: "bunny@gmail.com",
                     shareHolderName: "Bunny John",
-                    Type: "buy",
+                    type: "buy",
                     sharesCount: 1000,
                     transactionTime: "1",
                 },
@@ -39,7 +39,7 @@ describe('dnd reducer', () => {
                     id: 1,
                     emailAddress: "bunny@gmail.com",
                     shareHolderName: "Bunny John",
-                    Type: "buy",
+                    type: "buy",
                     sharesCount: 1000,
                     transactionTime: "1",
                 }
@@ -52,7 +52,7 @@ describe('dnd reducer', () => {
             id: null,
             emailAddress: "sunny@gmail.com",
             shareHolderName: "Sunny Raj",
-            Type: "buy",
+            type: "buy",
             sharesCount: 1000,
             transactionTime: "1",
         };
@@ -60,6 +60,7 @@ describe('dnd reducer', () => {
         expect(actual.results[1].id).toEqual(2);
         expect(actual.results.length).toEqual(2);
         expect(actual.results[1].shareHolderName).toEqual('Sunny Raj');
+        expect(actual.autoIncrementForId).toEqual(3);
     });
 
     it('should remove an item from share\'s related transactions state', () => {
@@ -67,7 +68,7 @@ describe('dnd reducer', () => {
             id: 6,
             emailAddress: "ravi@gmail.com",
             shareHolderName: "Rajamouli",
-            Type: "sell",
+            type: "sell",
             sharesCount: 3344,
             transactionTime: "1",
         };
@@ -79,7 +80,7 @@ describe('dnd reducer', () => {
                     id: 6,
                     emailAddress: "ravi@gmail.com",
                     shareHolderName: "Rajamouli",
-                    Type: "sell",
+                    type: "sell",
                     sharesCount: 3344,
                     transactionTime: "1",
                 },

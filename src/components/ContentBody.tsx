@@ -8,7 +8,9 @@ import AddNewTransaction from "./AddNewTransaction";
 interface Props {
     children?: ReactNode;
     shareRelatedTransactionState: ShareRelatedTransactionState,
-    deleteRecord: (record: ShareRelatedTransaction) => void
+    deleteRecord: (record: ShareRelatedTransaction) => void;
+    addRecord: (record: ShareRelatedTransaction) => void
+
 }
 
 const ContentBody = (props: Props) => {
@@ -45,9 +47,12 @@ const ContentBody = (props: Props) => {
         showModal();
     };
 
+    const addNewRecord = (newRecord: ShareRelatedTransaction) => {
+        props.addRecord(newRecord);
+    };
     return (
         <>
-            <AddNewTransaction />
+            <AddNewTransaction addNewRecord={addNewRecord} />
             <TransactionTable shareRelatedTransactionState={props.shareRelatedTransactionState} onClickDelete={onClickDelete} />
             <ModalContent handleOk={modalHandleOk} handleCancel={modalHandleCancel} isModalOpen={isModalOpen} />
         </>
