@@ -13,7 +13,7 @@ describe('dnd reducer', () => {
                 shareHolderName: "Bunny John",
                 Type: "buy",
                 sharesCount: 1000,
-                transactionTime: 1,
+                transactionTime: "1",
             },
         ]
     };
@@ -27,7 +27,7 @@ describe('dnd reducer', () => {
                     shareHolderName: "Bunny John",
                     Type: "buy",
                     sharesCount: 1000,
-                    transactionTime: 1,
+                    transactionTime: "1",
                 },
             ]
         }, { type: 'unknown' })).toEqual({
@@ -38,7 +38,7 @@ describe('dnd reducer', () => {
                     shareHolderName: "Bunny John",
                     Type: "buy",
                     sharesCount: 1000,
-                    transactionTime: 1,
+                    transactionTime: "1",
                 }
             ]
         });
@@ -51,7 +51,7 @@ describe('dnd reducer', () => {
             shareHolderName: "Sunny Raj",
             Type: "buy",
             sharesCount: 1000,
-            transactionTime: 1,
+            transactionTime: "1",
         };
         const actual = shareRelatedTransactionReducer(initialState, addSharesTransactionState(newResult));
         expect(actual.results[1].id).toEqual(4);
@@ -66,7 +66,7 @@ describe('dnd reducer', () => {
             shareHolderName: "Rajamouli",
             Type: "sell",
             sharesCount: 3344,
-            transactionTime: 1,
+            transactionTime: "1",
         };
 
         const actual = shareRelatedTransactionReducer({
@@ -77,7 +77,7 @@ describe('dnd reducer', () => {
                     shareHolderName: "Rajamouli",
                     Type: "sell",
                     sharesCount: 3344,
-                    transactionTime: 1,
+                    transactionTime: "1",
                 },
             ]
         }, removeSharesTransactionState(ResultToRemove));

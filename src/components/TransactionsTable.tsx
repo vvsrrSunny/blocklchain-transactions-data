@@ -3,6 +3,7 @@ import { ReactNode, useState } from "react";
 import { ShareRelatedTransaction, ShareRelatedTransactionState } from "../features/share-related-transaction/shareRelatedTransactionSlice";
 import { ColumnsType } from "antd/es/table";
 import ModalContent from "./ModalContent";
+import moment from 'moment';
 
 interface Props {
     children?: ReactNode;
@@ -70,7 +71,14 @@ const TransactionsTable = (props: Props) => {
             title: 'Transaction Time',
             dataIndex: 'transactionTime',
             key: 'transactionTime',
-            sorter: (a, b) => a.transactionTime - b.transactionTime,
+            sorter: (a : ShareRelatedTransaction, b: ShareRelatedTransaction) => {
+                const timeA = moment(a.transactionTime, 'HH:mm:ss');
+                const timeB = moment(b.transactionTime, 'HH:mm:ss');
+                return timeA.isBefore(timeB) ? -1 : timeA.isAfter(timeB) ? 1 : 0;
+            },
+            render: (_, record) => (
+                record.transactionTime
+            ),
         },
         {
             title: 'Action',

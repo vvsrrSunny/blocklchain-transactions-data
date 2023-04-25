@@ -10,7 +10,7 @@ export interface ShareRelatedTransaction {
     shareHolderName: string,
     Type: transactionType,
     sharesCount: number,
-    transactionTime: number,
+    transactionTime: string,
 }
 
 export type ShareRelatedTransactionState = { results: Array<ShareRelatedTransaction> };
@@ -24,7 +24,7 @@ const initialState: ShareRelatedTransactionState = {
             shareHolderName: "Bunny John",
             Type: "buy",
             sharesCount: 1000,
-            transactionTime: 400,
+            transactionTime: "00:02:00",
         },
         {
             key: 2,
@@ -33,7 +33,7 @@ const initialState: ShareRelatedTransactionState = {
             shareHolderName: "Benjamin Hartnett",
             Type: "buy",
             sharesCount: 3454,
-            transactionTime: 243,
+            transactionTime: "02:02:00",
         },
         {
             key: 3,
@@ -42,7 +42,7 @@ const initialState: ShareRelatedTransactionState = {
             shareHolderName: "Tania Admans",
             Type: "sell",
             sharesCount: 2454,
-            transactionTime: 1,
+            transactionTime: "03:02:00",
         },
         {
             key: 4,
@@ -51,7 +51,7 @@ const initialState: ShareRelatedTransactionState = {
             shareHolderName: "Sunny Varanasi",
             Type: "sell",
             sharesCount: 1375,
-            transactionTime: 7006,
+            transactionTime: "11:02:00",
         },
         {
             key: 5,
@@ -60,7 +60,7 @@ const initialState: ShareRelatedTransactionState = {
             shareHolderName: "Raj Chandra",
             Type: "buy",
             sharesCount: 3333,
-            transactionTime: 453,
+            transactionTime: "20:02:00",
         },
         {
             key: 6,
@@ -69,7 +69,7 @@ const initialState: ShareRelatedTransactionState = {
             shareHolderName: "Rajamouli",
             Type: "sell",
             sharesCount: 3344,
-            transactionTime: 100,
+            transactionTime: "01:02:00",
         },
     ]
 };
