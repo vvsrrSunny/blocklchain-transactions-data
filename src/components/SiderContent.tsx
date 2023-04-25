@@ -1,5 +1,5 @@
 import React from "react";
-import { DatabaseOutlined, StockOutlined} from '@ant-design/icons';
+import { DatabaseOutlined, StockOutlined } from '@ant-design/icons';
 import { Layout, Menu, Image, Row, Col, Divider, MenuProps } from 'antd';
 import logo from '../logo.svg';
 
