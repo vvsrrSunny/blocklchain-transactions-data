@@ -5,7 +5,7 @@ export type transactionType = "buy" | "sell";
 
 export interface ShareRelatedTransaction {
     key?: number
-    id: number,
+    id: number | null,
     emailAddress: string,
     shareHolderName: string,
     Type: transactionType,
@@ -13,9 +13,10 @@ export interface ShareRelatedTransaction {
     transactionTime: string,
 }
 
-export type ShareRelatedTransactionState = { results: Array<ShareRelatedTransaction> };
+export type ShareRelatedTransactionState = { autoIncrementForId: number, results: Array<ShareRelatedTransaction> };
 
 const initialState: ShareRelatedTransactionState = {
+    autoIncrementForId: 7,
     results: [
         {
             key: 1,
@@ -81,6 +82,9 @@ export const shareRelatedTransactionSlice = createSlice({
     reducers: {
         // Use the PayloadAction type to declare the contents of `action.payload`
         addSharesTransactionState: (state, action: PayloadAction<ShareRelatedTransaction>) => {
+            action.payload.key = state.autoIncrementForId;
+            action.payload.id = state.autoIncrementForId;
+            state.autoIncrementForId++;
             state.results.push(action.payload);
         },
         removeSharesTransactionState: (state, action: PayloadAction<ShareRelatedTransaction>) => {

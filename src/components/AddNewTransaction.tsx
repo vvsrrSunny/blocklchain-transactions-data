@@ -1,5 +1,6 @@
-import { Button, Drawer, Form, Input, InputNumber, Modal, Radio } from "antd";
-import { ReactNode, useState } from "react";
+import { Button, DatePicker, Drawer, Form, FormInstance, Input, InputNumber, Modal, Radio, TimePicker } from "antd";
+import moment from "moment";
+import React, { ReactNode, useState } from "react";
 
 
 interface Props {
@@ -8,17 +9,21 @@ interface Props {
 
 const AddNewTransaction = (props: Props) => {
     const [open, setOpen] = useState<boolean>(false);
-
+    const formRef = React.useRef<FormInstance>(null);
     const showDrawer = () => {
         setOpen(true);
     };
 
     const onClose = () => {
         setOpen(false);
+        formRef.current?.resetFields();
     };
 
     const onFinish = (values: any) => {
+        console.log(moment(values.transactionTime).format('DD-MM-YYYY h:mm A'));
+        values.transactionTime = moment(values.transactionTime).format('DD-MM-YYYY h:mm A');
         console.log('Success:', values);
+
     };
 
     const onFinishFailed = (errorInfo: any) => {
@@ -39,6 +44,7 @@ const AddNewTransaction = (props: Props) => {
                     onFinish={onFinish}
                     onFinishFailed={onFinishFailed}
                     autoComplete="off"
+                    ref={formRef}
                 >
                     <Form.Item
                         label="Email Address"
@@ -67,9 +73,22 @@ const AddNewTransaction = (props: Props) => {
                         name="sharesCount"
                         rules={[{ required: true, type: 'number', message: 'Please provide the number of shares' }]}
                     >
-                        <InputNumber style={{ width: '50%' }}/>
+                        <InputNumber style={{ width: '50%' }} />
                     </Form.Item>
-                    <hr></hr>
+                    <Form.Item
+                        label="Transaction time"
+                        name="transactionTime"
+                        rules={[
+                            {
+                                required: true,
+                                message: 'Please select a Date',
+                            },
+                        ]}
+                    >
+                        <DatePicker showTime={{ format: 'h:mm A' }} style={{ width: '50%' }} format="DD-MM-YYYY h:mm A" />
+                    </Form.Item>
+
+                    <hr className="pb-6"></hr>
                     <Form.Item>
                         <Button type="primary" className="bg-amber-500" htmlType="submit">
                             Submit

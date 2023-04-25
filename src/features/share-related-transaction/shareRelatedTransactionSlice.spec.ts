@@ -6,6 +6,7 @@ import shareRelatedTransactionReducer, {
 
 describe('dnd reducer', () => {
     const initialState: ShareRelatedTransactionState = {
+        autoIncrementForId: 2,
         results: [
             {
                 id: 1,
@@ -20,6 +21,7 @@ describe('dnd reducer', () => {
 
     it('should handle initial state', () => {
         expect(shareRelatedTransactionReducer({
+            autoIncrementForId: 2,
             results: [
                 {
                     id: 1,
@@ -31,6 +33,7 @@ describe('dnd reducer', () => {
                 },
             ]
         }, { type: 'unknown' })).toEqual({
+            autoIncrementForId: 2,
             results: [
                 {
                     id: 1,
@@ -46,7 +49,7 @@ describe('dnd reducer', () => {
 
     it('should add share\'s related transaction', () => {
         const newResult: ShareRelatedTransaction = {
-            id: 4,
+            id: null,
             emailAddress: "sunny@gmail.com",
             shareHolderName: "Sunny Raj",
             Type: "buy",
@@ -54,7 +57,7 @@ describe('dnd reducer', () => {
             transactionTime: "1",
         };
         const actual = shareRelatedTransactionReducer(initialState, addSharesTransactionState(newResult));
-        expect(actual.results[1].id).toEqual(4);
+        expect(actual.results[1].id).toEqual(2);
         expect(actual.results.length).toEqual(2);
         expect(actual.results[1].shareHolderName).toEqual('Sunny Raj');
     });
@@ -70,6 +73,7 @@ describe('dnd reducer', () => {
         };
 
         const actual = shareRelatedTransactionReducer({
+            autoIncrementForId: 7,
             results: [
                 {
                     id: 6,
