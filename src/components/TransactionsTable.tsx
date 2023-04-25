@@ -1,4 +1,4 @@
-import { Button, Table } from "antd";
+import { App, Button, Table } from "antd";
 import { ReactNode, useState } from "react";
 import { ShareRelatedTransaction, ShareRelatedTransactionState } from "../features/share-related-transaction/shareRelatedTransactionSlice";
 import { ColumnsType } from "antd/es/table";
@@ -11,6 +11,7 @@ interface Props {
 }
 
 const TransactionsTable = (props: Props) => {
+    const { notification } = App.useApp();
     const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
 
     const [recordToDelete, setRecordToDelete] = useState<ShareRelatedTransaction | null>(null);
@@ -20,7 +21,11 @@ const TransactionsTable = (props: Props) => {
     };
     const modalHandleOk = (): void => {
         if (!recordToDelete) {
-            //$$ set the notification to say failed to delete the transaction
+            notification.warning({
+                message: `Failed to delete`,
+                description: "The share's transaction record not deleted",
+                placement: 'bottomLeft',
+            });
             return;
         }
 

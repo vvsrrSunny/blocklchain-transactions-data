@@ -83,7 +83,7 @@ export const shareRelatedTransactionSlice = createSlice({
         addState: (state, action: PayloadAction<ShareRelatedTransaction>) => {
             state.results.push(action.payload);
         },
-        removeState: (state, action: PayloadAction<ShareRelatedTransaction>) => {
+        removeSharesTransactionState: (state, action: PayloadAction<ShareRelatedTransaction>) => {
             state.results = state.results.filter((result: ShareRelatedTransaction) => result.id !== action.payload.id);
         },
     },
@@ -92,6 +92,6 @@ export const shareRelatedTransactionSlice = createSlice({
 // provide a way to access the store using app selector.
 export const selectShareRelatedTransactionState = (state: RootState) => state.shareRelatedTransaction;
 
-export const { addState, removeState } = shareRelatedTransactionSlice.actions;
+export const { addState, removeSharesTransactionState } = shareRelatedTransactionSlice.actions;
 
 export default shareRelatedTransactionSlice.reducer;

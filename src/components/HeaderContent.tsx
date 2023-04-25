@@ -1,7 +1,6 @@
 import { Badge, Col, Row, Typography, theme } from "antd";
-import { Header } from "antd/es/layout/layout";
-import React from "react";
 import { BellFilled } from '@ant-design/icons';
+import { Header } from "antd/es/layout/layout";
 
 const HeaderContent = () => {
     const {

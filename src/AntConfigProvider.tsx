@@ -1,4 +1,4 @@
-import { ConfigProvider } from "antd";
+import { App, ConfigProvider } from "antd";
 import React, { ReactNode } from "react";
 interface Props {
     children?: ReactNode;
@@ -11,7 +11,9 @@ const AntConfigProvider = (props: Props) => {
                 colorPrimary: "#d97706",
             },
         }}>
-            {props.children}
+            <App>
+                {props.children}
+            </App>
         </ConfigProvider>
     );
 };

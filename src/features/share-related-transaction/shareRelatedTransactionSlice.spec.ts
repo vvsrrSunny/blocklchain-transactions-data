@@ -1,7 +1,7 @@
 import shareRelatedTransactionReducer, {
     ShareRelatedTransaction, ShareRelatedTransactionState,
 
-    addState, removeState
+    addState, removeSharesTransactionState
 } from './shareRelatedTransactionSlice';
 
 describe('dnd reducer', () => {
@@ -80,7 +80,7 @@ describe('dnd reducer', () => {
                     transactionTime: 1,
                 },
             ]
-        }, removeState(ResultToRemove));
+        }, removeSharesTransactionState(ResultToRemove));
 
 
         expect(actual.results.length).toEqual(0);
