@@ -1,9 +1,9 @@
-import { App, Button, Table } from "antd";
+import { App } from "antd";
 import { ReactNode, useState } from "react";
 import { ShareRelatedTransaction, ShareRelatedTransactionState } from "../features/share-related-transaction/shareRelatedTransactionSlice";
-import { ColumnsType } from "antd/es/table";
 import ModalContent from "./ModalContent";
-import moment from 'moment';
+import TransactionTable from "./TransactionTable";
+import AddNewTransaction from "./AddNewTransaction";
 
 interface Props {
     children?: ReactNode;
@@ -41,62 +41,14 @@ const ContentBody = (props: Props) => {
     };
 
     const onClickDelete = (record: ShareRelatedTransaction) => {
-        console.log(record);
         setRecordToDelete(record);
         showModal();
     };
 
-    const columns: ColumnsType<ShareRelatedTransaction> = [
-        {
-            title: 'Email',
-            dataIndex: 'emailAddress',
-            key: 'emailAddress',
-        },
-        {
-            title: 'Share Holder',
-            dataIndex: 'shareHolderName',
-            key: 'shareHolderName',
-        },
-        {
-            title: 'Type',
-            dataIndex: 'Type',
-            key: 'Type',
-        },
-        {
-            title: 'Number of Shares',
-            dataIndex: 'sharesCount',
-            key: 'sharesCount',
-        },
-        {
-            title: 'Transaction Time',
-            dataIndex: 'transactionTime',
-            key: 'transactionTime',
-            sorter: (a: ShareRelatedTransaction, b: ShareRelatedTransaction) => {
-                const timeA = moment(a.transactionTime, 'HH:mm:ss');
-                const timeB = moment(b.transactionTime, 'HH:mm:ss');
-                return timeA.isBefore(timeB) ? -1 : timeA.isAfter(timeB) ? 1 : 0;
-            },
-            render: (_, record) => (
-                //$$ formate the time in a nice way
-                record.transactionTime
-            ),
-        },
-        {
-            title: 'Action',
-            key: 'action',
-            render: (_, record) => (
-                <Button onClick={() => onClickDelete(record)} className="p-0" type="link" danger>Delete</Button>
-            ),
-        },
-    ];
-
     return (
         <>
-            <div className="pb-5 flex justify-end">
-                <Button type="primary" className="bg-amber-500">Add Transaction</Button>
-            </div>
-            
-            <Table className='overflow-x-auto' dataSource={props.shareRelatedTransactionState.results} columns={columns} />
+            <AddNewTransaction />
+            <TransactionTable shareRelatedTransactionState={props.shareRelatedTransactionState} onClickDelete={onClickDelete} />
             <ModalContent handleOk={modalHandleOk} handleCancel={modalHandleCancel} isModalOpen={isModalOpen} />
         </>
     );
