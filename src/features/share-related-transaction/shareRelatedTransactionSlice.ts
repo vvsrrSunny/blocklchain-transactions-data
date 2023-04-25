@@ -4,6 +4,7 @@ import { RootState } from '../../app/store';
 export type transactionType = "buy" | "sell";
 
 export interface ShareRelatedTransaction {
+    key?: number
     id: number,
     emailAddress: string,
     shareHolderName: string,
@@ -17,6 +18,7 @@ export type ShareRelatedTransactionState = { results: Array<ShareRelatedTransact
 const initialState: ShareRelatedTransactionState = {
     results: [
         {
+            key: 1,
             id: 1,
             emailAddress: "bunny@gmail.com",
             shareHolderName: "Bunny John",
@@ -25,6 +27,7 @@ const initialState: ShareRelatedTransactionState = {
             transactionTime: 1,
         },
         {
+            key: 2,
             id: 2,
             emailAddress: "ben@gmail.com",
             shareHolderName: "Benjamin Hartnett",
@@ -33,6 +36,7 @@ const initialState: ShareRelatedTransactionState = {
             transactionTime: 1,
         },
         {
+            key: 3,
             id: 3,
             emailAddress: "tania@gmail.com",
             shareHolderName: "Tania Admans",
@@ -41,6 +45,7 @@ const initialState: ShareRelatedTransactionState = {
             transactionTime: 1,
         },
         {
+            key: 4,
             id: 4,
             emailAddress: "sunny@gmail.com",
             shareHolderName: "Sunny Varanasi",
@@ -49,6 +54,7 @@ const initialState: ShareRelatedTransactionState = {
             transactionTime: 1,
         },
         {
+            key: 5,
             id: 5,
             emailAddress: "raj@gmail.com",
             shareHolderName: "Raj Chandra",
@@ -57,6 +63,7 @@ const initialState: ShareRelatedTransactionState = {
             transactionTime: 1,
         },
         {
+            key: 6,
             id: 6,
             emailAddress: "ravi@gmail.com",
             shareHolderName: "Rajamouli",

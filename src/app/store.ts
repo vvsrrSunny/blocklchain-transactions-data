@@ -1,8 +1,9 @@
 import { configureStore, ThunkAction, Action } from '@reduxjs/toolkit';
+import shareRelatedTransactionReducer from '../features/share-related-transaction/shareRelatedTransactionSlice';
 
 export const store = configureStore({
   reducer: {
-    //$$ set the store and add reducer
+    shareRelatedTransaction: shareRelatedTransactionReducer,
   },
 });
 

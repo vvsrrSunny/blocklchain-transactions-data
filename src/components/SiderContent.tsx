@@ -1,5 +1,5 @@
 import React from "react";
-import { UserOutlined } from '@ant-design/icons';
+import { DatabaseOutlined, StockOutlined} from '@ant-design/icons';
 import { Layout, Menu, Image, Row, Col, Divider, MenuProps } from 'antd';
 import logo from '../logo.svg';
 
@@ -22,8 +22,8 @@ function getItem(
 }
 
 const items: MenuItem[] = [
-    getItem('Transactions', 'transactions', <UserOutlined />, [
-        getItem('Shares', '1', <UserOutlined />),
+    getItem('Transactions', 'transactions', <DatabaseOutlined />, [
+        getItem('Shares', '1', <StockOutlined />),
     ]),
 ];
 const SiderContent = () => {

@@ -10,7 +10,7 @@ interface Props {
     children?: ReactNode;
 }
 
-const AppLayout: React.FC = (props: Props) => {
+const AppLayout = (props: Props) => {
     const {
         token: { colorBgContainer },
     } = theme.useToken();
@@ -21,7 +21,7 @@ const AppLayout: React.FC = (props: Props) => {
             <Layout>
                 <HeaderContent />
                 <Content style={{ margin: '24px 16px 0' }}>
-                    <div style={{ padding: 24, minHeight: 360, background: colorBgContainer }}>content</div>
+                    <div style={{ padding: 24, minHeight: 360, background: colorBgContainer }}>{props.children}</div>
                 </Content>
                 <Footer style={{ textAlign: 'center' }}>Copy Right ©2023 All rights reserved</Footer>
             </Layout>
