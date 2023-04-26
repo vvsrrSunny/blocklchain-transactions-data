@@ -42,6 +42,8 @@ const AddNewTransaction = (props: Props) => {
         }
 
         props.addNewRecord(newRecord);
+
+        form.resetFields();
         onClose();
     };
 
