@@ -11,12 +11,12 @@ interface Props {
 
 const ModalContent = ({ children, ...props }: Props) => {
     return (
-        <Modal title={<div className="flex-row"><WarningOutlined className="text-red-600" /> Are you sure?</div>} open={props.isModalOpen} onOk={props.handleOk} onCancel={props.handleCancel} footer={[
+        <Modal title={<div className="flex-row"><WarningOutlined style={{color: '#ff4D4f'}} /> Delete Transaction</div>} open={props.isModalOpen} onOk={props.handleOk} onCancel={props.handleCancel} footer={[
             <Button key="back" danger onClick={props.handleCancel}>
                 Cancel
             </Button>,
             <Button key="submit" type="primary" danger onClick={props.handleOk}>
-                Ok
+                Confirm
             </Button>
         ]}>
             <hr className="pb-2" />

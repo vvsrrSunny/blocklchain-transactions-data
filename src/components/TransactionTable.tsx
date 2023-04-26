@@ -1,6 +1,6 @@
 import { ReactNode } from "react";
 import { ShareRelatedTransaction, ShareRelatedTransactionState } from "../features/share-related-transaction/shareRelatedTransactionSlice";
-import { Button, Table } from "antd";
+import { Button, Table, Tag } from "antd";
 import { ColumnsType } from "antd/es/table";
 import moment from "moment";
 
@@ -17,6 +17,7 @@ const TransactionTable = (props: Props) => {
             title: 'Email',
             dataIndex: 'emailAddress',
             key: 'emailAddress',
+            render: (text: string) => <Button className="p-0" type="link">{text}</Button>,
         },
         {
             title: 'Share Holder',
@@ -25,8 +26,14 @@ const TransactionTable = (props: Props) => {
         },
         {
             title: 'Type',
-            dataIndex: 'Type',
-            key: 'Type',
+            dataIndex: 'type',
+            key: 'type',
+            render: (_, record) => (
+                <Tag color={record.type === "buy" ? "green" : "blue"} key={record.key}>
+                    {record.type}
+                </Tag>
+            ),
+
         },
         {
             title: 'Number of Shares',
@@ -43,8 +50,7 @@ const TransactionTable = (props: Props) => {
                 return timeA.isBefore(timeB) ? -1 : timeA.isAfter(timeB) ? 1 : 0;
             },
             render: (_, record) => (
-                //$$ formate the time in a nice way
-                record.transactionTime
+                moment(record.transactionTime).format('LLL')
             ),
         },
         {
@@ -55,8 +61,8 @@ const TransactionTable = (props: Props) => {
             ),
         },
     ];
-    
-    return(
+
+    return (
         <Table className='overflow-x-auto' dataSource={props.shareRelatedTransactionState.results} columns={columns} />
     );
 }

@@ -8,7 +8,7 @@ const AntConfigProvider = (props: Props) => {
     return (
         <ConfigProvider theme={{
             token: {
-                colorPrimary: "d97706",
+                colorPrimary: "#f59e0b",
             },
         }}>
             <App>
