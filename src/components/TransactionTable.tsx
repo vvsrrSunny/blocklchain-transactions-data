@@ -50,7 +50,7 @@ const TransactionTable = (props: Props) => {
                 return timeA.isBefore(timeB) ? -1 : timeA.isAfter(timeB) ? 1 : 0;
             },
             render: (_, record) => (
-                moment(record.transactionTime).format('LLL')
+                record.transactionTime
             ),
         },
         {
