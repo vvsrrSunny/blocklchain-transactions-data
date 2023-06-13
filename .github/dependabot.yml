@@ -4,6 +4,8 @@ version: 2
 updates:
   - package-ecosystem: "npm"
     directory: "/"
+    ignore:
+      - dependency-name: "react-scripts"
     schedule:
       interval: "daily"
       time: "04:07"
