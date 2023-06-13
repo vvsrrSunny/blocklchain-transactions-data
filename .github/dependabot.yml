@@ -1,0 +1,10 @@
+# Specify the timezone for checks
+
+version: 2
+updates:
+  - package-ecosystem: "npm"
+    directory: "/"
+    schedule:
+      interval: "weekly"
+      time: "04:04"
+      timezone: "Australia/Perth"
