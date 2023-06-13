@@ -11,5 +11,5 @@ updates:
       - dependency-name: "react-scripts"
     schedule:
       interval: "daily"
-      time: "04:26"
+      time: "04:28"
       timezone: "Australia/Perth"
