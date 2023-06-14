@@ -6,10 +6,10 @@ updates:
     directory: "/"
     schedule:
       interval: "daily"
-      time: "10:44" # hh:mm formate
+      time: "10:52" # hh:mm formate
       timezone: "Australia/Perth"
     open-pull-requests-limit: 10
     ignore:
-      # ignore all GitHub linguist patch updates
-      - dependency-name: "*"
-        update-types: ["version-update:semver-major"]
+      # ignore all 
+      - update-types: ["version-update:semver-major"]
+      # - dependency-name: "*"
