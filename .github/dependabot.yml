@@ -1,15 +1,19 @@
-# Specify the timezone for checks
-
 version: 2
 updates:
   - package-ecosystem: "npm"
     directory: "/"
     schedule:
       interval: "daily"
-      time: "10:52" # hh:mm formate
+      time: "11:40" # hh:mm formate
       timezone: "Australia/Perth"
-    open-pull-requests-limit: 10
+      # set this limit to more than 0 to get this start working 
+    open-pull-requests-limit: 0
+    milestone: 2
+    assignees:
+      - "vvsrrSunny"
+    reviewers:
+     - "vvsrrSunny"
     ignore:
-      # ignore all 
-      - update-types: ["version-update:semver-major"]
-      # - dependency-name: "*"
+      # ignore all major updates updates
+      - dependency-name: "*"
+        update-types: ["version-update:semver-major"]
